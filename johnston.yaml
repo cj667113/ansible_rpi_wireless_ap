@@ -1,0 +1,18 @@
+---
+- name: Developed 7/17/2020 by Christopher M Johnston
+  hosts: all
+- name: Configure Raspberry Pi Wireless AP Mode
+  hosts: all
+  become: True
+  tasks:
+   - name: Update
+     command: sudo apt-get update -y
+   - name: Upgrade
+     command: sudo apt-get upgrade -y
+   - name: Install isc-dhcp-server
+     command: sudo apt-get install isc-dhcp-server -y
+   - name: copy wpa_ap.conf
+     copy:
+         src: wpa_ap.conf
+   - name: copy setup.sh
+         src: setup.sh
